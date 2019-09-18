@@ -32,7 +32,9 @@
             "scripts": [
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
-              }
+              },
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "es5BrowserSupport": true
           },
@@ -161,7 +163,12 @@
             "styles": [
               "projects/module-a/src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

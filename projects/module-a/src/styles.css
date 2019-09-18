@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/dist/css/bootstrap-grid.css";
+@import "~bootstrap/dist/css/bootstrap-reboot.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+*:focus {
+  outline: none !important;
+}

@@ -7,11 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'shell-app';
+  showFiller = false;
 
   config = {
     'module-a': {
       loaded: false,
-      paths: ['http://127.0.0.1:64606/main.js', 'http://127.0.0.1:64606/polyfills.js', 'http://127.0.0.1:64606/runtime.js'],
+      paths: ['http://127.0.0.1:61268/main.js', 'http://127.0.0.1:61268/polyfills.js', 'http://127.0.0.1:61268/runtime.js'],
       element: 'module-a'
     }
   };
