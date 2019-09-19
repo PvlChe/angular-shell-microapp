@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ItemListComponent} from './item-list/item-list.component';
 import {EmptyComponent} from './empty/empty.component';
+import {ItemDetailsComponent} from './item/item-details/item-details.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,10 @@ const routes: Routes = [
     RouterModule.forRoot([
       {
         path: 'module-a', component: ItemListComponent
+      },
+      {
+        path: 'module-a/item',
+        component: ItemDetailsComponent
       },
       {
         path: '**', component: EmptyComponent
