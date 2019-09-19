@@ -14,11 +14,17 @@ export class AppComponent implements OnInit {
       loaded: false,
       paths: ['http://127.0.0.1:61268/main.js', 'http://127.0.0.1:61268/polyfills.js', 'http://127.0.0.1:61268/runtime.js'],
       element: 'module-a'
+    },
+    'module-order': {
+      loaded: false,
+      paths: ['http://127.0.0.1:60000/main.js', 'http://127.0.0.1:60000/polyfills.js', 'http://127.0.0.1:60000/runtime.js'],
+      element: 'module-order'
     }
   };
 
   ngOnInit() {
     this.load('module-a');
+    this.load('module-order');
   }
 
   load(name: string): void {
@@ -28,7 +34,7 @@ export class AppComponent implements OnInit {
 
     const content = document.getElementById('content');
 
-    this.config['module-a'].paths.forEach( path => {
+    this.config[name].paths.forEach( path => {
       const script = document.createElement('script');
       script.src = path;
       content.appendChild(script);
@@ -36,7 +42,6 @@ export class AppComponent implements OnInit {
 
     const element: HTMLElement = document.createElement(configItem.element);
     content.appendChild(element);
-
   }
 
 }

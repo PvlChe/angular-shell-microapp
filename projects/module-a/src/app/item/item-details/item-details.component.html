@@ -1,0 +1,182 @@
+<div class="wrapper d-flex">
+  <div class="item-container w-50">
+    <mat-card class="example-card m-5 card mat-elevation-z0">
+      <mat-card-header>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <h5><b>Description:</b></h5>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequuntur dicta enim
+        expedita explicabo impedit molestiae, nisi nostrum quasi quis sint, tempora voluptatum? Aliquid dicta dolore
+        harum incidunt necessitatibus! Beatae dolor doloremque excepturi hic laudantium nobis nulla obcaecati,
+        quibusdam, quidem ratione saepe sapiente similique totam? Consectetur dolorem dolores earum fugiat impedit iste
+        laborum molestias nulla porro quasi quos, vitae.
+      </p>
+      <h5><b>Details:</b></h5>
+      <ul class="">
+        <li>Lorem ipsum dolor sit. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit.</li>
+        <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+        <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
+      </ul>
+    </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="actions-container w-50 p-5 card m-5">
+    <mat-tab-group mat-stretch-tabs disableRipple>
+      <mat-tab label="Buy">
+        <div class="d-flex">
+          <div class="w-50 py-5 d-flex flex-column">
+            <h5 class="mb-4">Order Details:</h5>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Amount</mat-label>
+              <mat-select [required]="true">
+                <mat-option [value]="1">
+                  <span>1</span>
+                </mat-option>
+                <mat-option [value]="2">
+                  <span>2</span>
+                </mat-option>
+                <mat-option [value]="3">
+                  <span>3</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Color</mat-label>
+              <mat-select [required]="true">
+                <mat-option [value]="'White'">
+                  <span>White</span>
+                </mat-option>
+                <mat-option [value]="'Black'">
+                  <span>Black</span>
+                </mat-option>
+                <mat-option [value]="'Red'">
+                  <span>Red</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Payment method</mat-label>
+              <mat-select #payment [required]="true">
+                <mat-option [value]="'Buy now'">
+                  <span>Buy now</span>
+                </mat-option>
+                <mat-option [value]="'Instalment'">
+                  <span>Instalment</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="my-5 w-50" *ngIf="payment.value === 'Instalment'">
+              <mat-label>Months</mat-label>
+              <mat-select [required]="true">
+                <mat-option [value]="12">
+                  <span>12</span>
+                </mat-option>
+                <mat-option [value]="24">
+                  <span>24</span>
+                </mat-option>
+                <mat-option [value]="36">
+                  <span>36</span>
+                </mat-option>
+                <mat-option [value]="48">
+                  <span>48</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="actions-container">
+              <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
+              <button mat-raised-button color="primary" class="mr-3" [disabled]="true">Buy</button>
+            </div>
+          </div>
+          <div class="w-50 py-5">
+            <h5 class="mb-4">Delivery Details:</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, debitis hic id impedit laborum
+              officia qui quod tenetur veniam. Ab aliquam asperiores beatae cum deleniti dolorem eaque eligendi
+              eum expedita illum impedit inventore maxime modi numquam odit pariatur placeat quae quidem quis
+            </p>
+            <p>
+              quos sed suscipit, unde, ut vitae voluptas? A aut doloribus et eum, nulla pariatur quasi. Amet ea
+              enim maiores numquam odio pariatur possimus provident qui quis quod? Aperiam atque, fugit illum
+              inventore labore modi molestias possimus praesentium quam vero. Ab aspernatur cumque dicta harum
+              ipsam laborum libero minima nam nulla, quisquam recusandae repellat rerum saepe unde vero voluptas?
+            </p>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Rent">
+        <div class="d-flex">
+          <div class="w-50 py-5 d-flex flex-column">
+            <h5 class="mb-4">Order Details:</h5>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Amount</mat-label>
+              <mat-select [required]="true">
+                <mat-option [value]="1">
+                  <span>1</span>
+                </mat-option>
+                <mat-option [value]="2">
+                  <span>2</span>
+                </mat-option>
+                <mat-option [value]="3">
+                  <span>3</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Color</mat-label>
+              <mat-select [required]="true">
+                <mat-option [value]="'White'">
+                  <span>White</span>
+                </mat-option>
+                <mat-option [value]="'Black'">
+                  <span>Black</span>
+                </mat-option>
+                <mat-option [value]="'Red'">
+                  <span>Red</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mt-5 mb-1 w-50">
+              <mat-label>From</mat-label>
+              <input matInput [matDatepicker]="pickerfrom" placeholder="Choose a date" [required]="true">
+              <mat-datepicker-toggle matSuffix [for]="pickerfrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerfrom></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="mt-1 mb-5 w-50">
+              <mat-label>To</mat-label>
+              <input matInput [matDatepicker]="pickerto" placeholder="Choose a date" [required]="true">
+              <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+              <mat-datepicker #pickerto></mat-datepicker>
+            </mat-form-field>
+
+            <div class="actions-container">
+              <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
+              <button mat-raised-button color="primary" class="mr-3" [disabled]="true">Rent</button>
+            </div>
+          </div>
+          <div class="w-50 py-5">
+            <h5 class="mb-4">Delivery Details:</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, debitis hic id impedit laborum
+              officia qui quod tenetur veniam. Ab aliquam asperiores beatae cum deleniti dolorem eaque eligendi
+              eum expedita illum impedit inventore maxime modi numquam odit pariatur placeat quae quidem quis
+            </p>
+            <p>
+              quos sed suscipit, unde, ut vitae voluptas? A aut doloribus et eum, nulla pariatur quasi. Amet ea
+              enim maiores numquam odio pariatur possimus provident qui quis quod? Aperiam atque, fugit illum
+              inventore labore modi molestias possimus praesentium quam vero. Ab aspernatur cumque dicta harum
+              ipsam laborum libero minima nam nulla, quisquam recusandae repellat rerum saepe unde vero voluptas?
+            </p>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
