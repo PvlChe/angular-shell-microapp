@@ -53,7 +53,10 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-    const appElement = createCustomElement(AppComponent, { injector: this.injector});
-    customElements.define('module-a', appElement);
+
+      const appElement = createCustomElement(AppComponent, { injector: this.injector});
+      customElements.define('module-a', appElement);
+      console.log('defined module-a');
+
   }
 }

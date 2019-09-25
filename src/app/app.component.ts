@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   config = {
     'module-a': {
       loaded: false,
-      paths: ['http://127.0.0.1:61268/main.js', 'http://127.0.0.1:61268/polyfills.js', 'http://127.0.0.1:61268/runtime.js'],
+      paths: ['module-a/main.js', 'module-a//polyfills.js', 'module-a/runtime.js'],
       element: 'module-a'
     },
     'module-order': {
       loaded: false,
-      paths: ['http://127.0.0.1:60000/main.js', 'http://127.0.0.1:60000/polyfills.js', 'http://127.0.0.1:60000/runtime.js'],
+      paths: ['order/main.js', 'order/polyfills.js', 'order/runtime.js'],
       element: 'module-order'
     }
   };
@@ -38,10 +38,12 @@ export class AppComponent implements OnInit {
       const script = document.createElement('script');
       script.src = path;
       content.appendChild(script);
+
     });
 
     const element: HTMLElement = document.createElement(configItem.element);
     content.appendChild(element);
+    console.log('uppended ' + name);
   }
 
 }
