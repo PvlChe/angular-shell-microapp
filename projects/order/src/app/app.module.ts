@@ -39,10 +39,7 @@ export class AppModule {
 
   ngDoBootstrap() {
 
-    if (!customElements.get('module-order')) {
       const appElement = createCustomElement(AppComponent, { injector: this.injector});
       customElements.define('module-order', appElement);
-
-    }
   }
 }
