@@ -6,6 +6,9 @@ import {createCustomElement} from '@angular/elements';
 import {AppRoutingModule} from './app-routing.module';
 import { OrderComponent } from './order/order.component';
 import {EmptyComponent} from './empty/empty.component';
+import {MatButtonModule, MatCheckboxModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatRadioModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,15 @@ import {EmptyComponent} from './empty/empty.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatRadioModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [],

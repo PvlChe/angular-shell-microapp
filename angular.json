@@ -292,7 +292,7 @@
               "projects/order/src/assets"
             ],
             "styles": [
-              "projects/order/src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true

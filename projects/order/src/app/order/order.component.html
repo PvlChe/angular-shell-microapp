@@ -1,1 +1,54 @@
-<h1 class="m-5"><b>Order works!</b></h1>
+<div class="m-5 d-flex flex-wrap">
+  <div class="input-container d-flex flex-column w-50">
+    <mat-label class="mb-2">Anrede:</mat-label>
+    <mat-radio-group [(ngModel)]="anrede">
+      <mat-radio-button class="example-margin mr-2" value="Herr">Herr</mat-radio-button>
+      <mat-radio-button class="example-margin mr-2" value="Frau">Frau</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>Firstname</mat-label>
+      <input matInput #first [required]="true">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>Lastname</mat-label>
+      <input matInput #last [required]="true">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>Email</mat-label>
+      <input matInput #email [required]="true">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>Adresse</mat-label>
+      <input matInput #adresse [required]="true">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>PLZ</mat-label>
+      <input matInput #plz [required]="true">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3">
+      <mat-label>Ort</mat-label>
+      <input matInput #ort [required]="true">
+    </mat-form-field>
+  </div>
+  <div class="output-container d-flex flex-column w-50">
+    <h5 class="my-3">Your perosnal data:</h5>
+    <mat-label class="mb-2"><b>Name:</b></mat-label>
+    <span class="mb-2">&nbsp;{{(anrede ? anrede + ' ' : '') + first.value + ' ' + last.value}}</span>
+    <mat-label class="mb-2"><b>Email:</b></mat-label>
+    <span class="mb-2">&nbsp;{{email.value}}</span>
+    <mat-label class="mb-2"><b>Adresse:</b></mat-label>
+    <span>&nbsp;{{adresse.value}}</span>
+    <span class="mb-2">&nbsp;{{plz.value + ' ' + ort.value}}</span>
+    <mat-divider></mat-divider>
+    <h5 class="my-3">Your order data:</h5>
+    <mat-label class="mb-2"><b>Name:</b></mat-label>
+    <span class="mb-2">&nbsp;{{(anrede ? anrede + ' ' : '') + first.value + ' ' + last.value}}</span>
+    <mat-label class="mb-2"><b>Email:</b></mat-label>
+    <span class="mb-2">&nbsp;{{email.value}}</span>
+    <mat-label class="mb-2"><b>Adresse:</b></mat-label>
+    <span>&nbsp;{{adresse.value}}</span>
+    <mat-checkbox class="mt-5">Einverstanden mit AGB</mat-checkbox>
+  </div>
+  <button mat-raised-button color="accent" disableRipple class="m-auto">Save</button>
+  </div>
+
