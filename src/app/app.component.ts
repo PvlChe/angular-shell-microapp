@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   config = {
     'module-a': {
       loaded: false,
-      paths: ['module-a/main.js', 'module-a//polyfills.js', 'module-a/runtime.js'],
+      paths: ['http://127.0.0.1:61268/main.js'],
       element: 'module-a'
     },
     'module-order': {
       loaded: false,
-      paths: ['order/main.js', 'order/polyfills.js', 'order/runtime.js'],
+      paths: ['http://127.0.0.1:60000/main.js'],
       element: 'module-order'
     }
   };
@@ -33,17 +33,12 @@ export class AppComponent implements OnInit {
     if (configItem.loaded) { return; }
 
     const content = document.getElementById('content');
-
-    this.config[name].paths.forEach( path => {
-      const script = document.createElement('script');
-      script.src = path;
-      content.appendChild(script);
-
-    });
+    const script = document.createElement('script');
+    script.src = this.config[name].path;
+    content.appendChild(script);
 
     const element: HTMLElement = document.createElement(configItem.element);
     content.appendChild(element);
-    console.log('uppended ' + name);
   }
 
 }

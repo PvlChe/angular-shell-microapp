@@ -41,6 +41,5 @@ export class AppModule {
 
       const appElement = createCustomElement(AppComponent, { injector: this.injector});
       customElements.define('module-order', appElement);
-      console.log('defined module-order');
   }
 }
