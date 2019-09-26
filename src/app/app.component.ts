@@ -12,19 +12,25 @@ export class AppComponent implements OnInit {
   config = {
     'module-a': {
       loaded: false,
-      paths: ['http://127.0.0.1:61268/main.js'],
+      path: ['http://127.0.0.1:61268/main.js'],
       element: 'module-a'
     },
     'module-order': {
       loaded: false,
-      paths: ['http://127.0.0.1:60000/main.js'],
+      path: ['http://127.0.0.1:60000/main.js'],
       element: 'module-order'
+    },
+    'module-invoice': {
+      loaded: false,
+      path: ['http://127.0.0.1:60001/main.js'],
+      element: 'module-invoice'
     }
   };
 
   ngOnInit() {
     this.load('module-a');
     this.load('module-order');
+    this.load('module-invoice');
   }
 
   load(name: string): void {

@@ -91,7 +91,7 @@
             </mat-form-field>
             <div class="actions-container">
               <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
-              <button mat-raised-button color="primary" class="mr-3" [disabled]="true">Buy</button>
+              <button mat-raised-button color="primary" class="mr-3" (click)="onBuyClick()">Buy</button>
             </div>
           </div>
           <div class="w-50 py-5">
@@ -157,7 +157,7 @@
 
             <div class="actions-container">
               <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
-              <button mat-raised-button color="primary" class="mr-3" [disabled]="true">Rent</button>
+              <button mat-raised-button color="primary" class="mr-3" routerLink="/order">Rent</button>
             </div>
           </div>
           <div class="w-50 py-5">

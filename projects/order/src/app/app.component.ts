@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,4 +13,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.initialNavigation();
   }
+
 }
