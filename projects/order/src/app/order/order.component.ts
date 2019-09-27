@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {log} from 'util';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,7 @@ export class OrderComponent implements OnInit {
   }
 
   onSaveClick() {
-    this.router.navigate(['invoice']);
+    console.log('test a click');
   }
 
 }

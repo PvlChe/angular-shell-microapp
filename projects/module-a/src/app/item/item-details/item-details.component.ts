@@ -14,15 +14,17 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onBackClick() {
-    this.router.navigate(['module-a']);
+    this.router.navigate(['module-a']).then( () => {
+        this.router.initialNavigation();
+    });
   }
 
   onRentClick() {
-    this.router.navigate(['order']);
+
   }
 
   onBuyClick() {
-    this.router.navigate(['order']);
+
   }
 
 }

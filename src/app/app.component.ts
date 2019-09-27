@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {StateService} from './state.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  constructor(private stateService: StateService) {
+
+  }
+
   title = 'shell-app';
   showFiller = false;
 
@@ -45,6 +50,18 @@ export class AppComponent implements OnInit {
 
     const element: HTMLElement = document.createElement(configItem.element);
     content.appendChild(element);
+
+    element.addEventListener('message', msg => this.handleMessage(msg));
+    element.setAttribute('state', 'init');
+
+    script.onerror = () => console.error(`error loading ${configItem.path}`);
+
+
+    this.stateService.registerClient(element);
+  }
+
+  handleMessage(msg): void {
+    console.log('shell received message: ', msg.detail);
   }
 
 }

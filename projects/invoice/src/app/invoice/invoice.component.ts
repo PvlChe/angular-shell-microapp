@@ -14,7 +14,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   onOkClick() {
-    this.router.navigate(['module-a']);
+    console.log('test click');
   }
 
 }
