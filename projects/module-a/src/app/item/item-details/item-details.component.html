@@ -1,28 +1,22 @@
-<div class="wrapper d-flex">
+<div *ngIf="item" class="wrapper d-flex">
   <div class="item-container w-50">
     <mat-card class="example-card m-5 card mat-elevation-z0">
       <mat-card-header>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        <mat-card-title>{{item.brand + ' ' + item.model}}</mat-card-title>
+        <mat-card-subtitle>{{item.color + ', ' + item.volume}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <h5><b>Description:</b></h5>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequuntur dicta enim
-        expedita explicabo impedit molestiae, nisi nostrum quasi quis sint, tempora voluptatum? Aliquid dicta dolore
-        harum incidunt necessitatibus! Beatae dolor doloremque excepturi hic laudantium nobis nulla obcaecati,
-        quibusdam, quidem ratione saepe sapiente similique totam? Consectetur dolorem dolores earum fugiat impedit iste
-        laborum molestias nulla porro quasi quos, vitae.
+        {{item.description}}
       </p>
       <h5><b>Details:</b></h5>
       <ul class="">
-        <li>Lorem ipsum dolor sit. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit.</li>
-        <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit.</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-        <li>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit. Lorem ipsum dolor sit.</li>
+        <li><b>Screen:</b>{{' ' + item.screen}}</li>
+        <li><b>Camera:</b>{{' ' + item.camera}}</li>
+        <li><b>Processor:</b>{{' ' + item.processor}}</li>
+        <li><b>RAM:</b>{{' ' + item.ram}}</li>
       </ul>
     </mat-card-content>
     </mat-card>
@@ -36,28 +30,8 @@
             <mat-form-field class="my-5 w-50">
               <mat-label>Amount</mat-label>
               <mat-select [required]="true">
-                <mat-option [value]="1">
-                  <span>1</span>
-                </mat-option>
-                <mat-option [value]="2">
-                  <span>2</span>
-                </mat-option>
-                <mat-option [value]="3">
-                  <span>3</span>
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="my-5 w-50">
-              <mat-label>Color</mat-label>
-              <mat-select [required]="true">
-                <mat-option [value]="'White'">
-                  <span>White</span>
-                </mat-option>
-                <mat-option [value]="'Black'">
-                  <span>Black</span>
-                </mat-option>
-                <mat-option [value]="'Red'">
-                  <span>Red</span>
+                <mat-option *ngFor="let num of amount" [value]="num">
+                  <span>{{num}}</span>
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -91,7 +65,7 @@
             </mat-form-field>
             <div class="actions-container">
               <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
-                <a mat-raised-button color="primary" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
+                <a mat-raised-button color="primary" class="mx-auto my-5 w-25 text-white text-decoration-none"
                    href="#/order" (click)="onBuyClick()">Buy
                 </a>
             </div>

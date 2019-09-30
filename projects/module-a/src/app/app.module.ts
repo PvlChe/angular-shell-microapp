@@ -19,6 +19,7 @@ import { EmptyComponent } from './empty/empty.component';
 import { ItemDetailsComponent } from './item/item-details/item-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
 
     // MAterial Design
     MatCardModule,

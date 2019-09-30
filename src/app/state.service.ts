@@ -18,5 +18,4 @@ export class StateService {
             client.setAttribute('state', state);
         }
     }
-
 }

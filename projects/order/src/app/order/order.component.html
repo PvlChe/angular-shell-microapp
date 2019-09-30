@@ -1,37 +1,37 @@
 <div class="m-5 d-flex flex-wrap">
   <h2 class="w-100 text-center my-5">Delievery Details</h2>
-  <div class="input-container d-flex flex-column w-50">
+  <div class="input-container d-flex flex-column w-50 px-5">
     <mat-label class="mb-2">Anrede:</mat-label>
     <mat-radio-group [(ngModel)]="anrede">
       <mat-radio-button class="example-margin mr-2" value="Herr">Herr</mat-radio-button>
       <mat-radio-button class="example-margin mr-2" value="Frau">Frau</mat-radio-button>
     </mat-radio-group>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Firstname</mat-label>
       <input matInput #first [required]="true">
     </mat-form-field>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Lastname</mat-label>
       <input matInput #last [required]="true">
     </mat-form-field>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Email</mat-label>
       <input matInput #email [required]="true">
     </mat-form-field>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Adresse</mat-label>
       <input matInput #adresse [required]="true">
     </mat-form-field>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>PLZ</mat-label>
       <input matInput #plz [required]="true">
     </mat-form-field>
-    <mat-form-field class="mt-1 mb-3">
+    <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Ort</mat-label>
       <input matInput #ort [required]="true">
     </mat-form-field>
   </div>
-  <div class="output-container d-flex flex-column w-50">
+  <div class="output-container d-flex flex-column w-50 px-5">
     <h5 class="my-3">Your perosnal data:</h5>
     <mat-label class="mb-2"><b>Name:</b></mat-label>
     <span class="mb-2">&nbsp;{{(anrede ? anrede + ' ' : '') + first.value + ' ' + last.value}}</span>
