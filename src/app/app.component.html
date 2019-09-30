@@ -7,11 +7,12 @@
         <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Katalog</a></li>
         <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Dashboard</a></li>
       </ul>
-      <button mat-raised-button color="primary" class="h-50">Anmelden</button>
+      <a href="#/login" class="btn-link nav-link text-decoration-none text-white" mat-raised-button color="primary" class="h-50">Anmelden</a>
     </div>
   </mat-toolbar>
   <div id="content" class="flex-grow-1 col-md-12 m-auto">
   </div>
+  <router-outlet></router-outlet>
   <mat-toolbar [color]="'accent'">
     <div class="col-md-12 m-auto">
       <h1>Footer</h1>

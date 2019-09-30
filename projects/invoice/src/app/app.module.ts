@@ -29,8 +29,9 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-
-      const appElement = createCustomElement(AppComponent, { injector: this.injector});
-      customElements.define('module-invoice', appElement);
+      if (!customElements.get('module-invoice')) {
+        const appElement = createCustomElement(AppComponent, { injector: this.injector});
+        customElements.define('module-invoice', appElement);
+      }
   }
 }

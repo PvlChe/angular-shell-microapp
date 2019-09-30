@@ -1,0 +1,24 @@
+.login-card {
+  padding: 3rem;
+  height: 73vh;
+  width: 50%;
+  margin: auto;
+  & mat-tab-group {
+    margin: auto;
+  }
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 4rem;
+  height: auto;
+
+  & > * {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 1rem;
+    min-height: 3rem;
+  }
+}

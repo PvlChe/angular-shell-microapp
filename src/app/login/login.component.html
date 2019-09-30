@@ -1,0 +1,40 @@
+<div class="login-card">
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Anmelden"><div class="register-container">
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="signIn()" color="primary">Anmelden</button>
+    </div>
+    </mat-tab>
+    <mat-tab label="Registrieren">
+
+
+      <div class="register-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your name" [formControl]="name" required>
+          <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [formControl]="password" required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Registrieren</button>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -38,8 +38,9 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-
-      const appElement = createCustomElement(AppComponent, { injector: this.injector});
+    if (!customElements.get('module-order')) {
+      const appElement = createCustomElement(AppComponent, {injector: this.injector});
       customElements.define('module-order', appElement);
+    }
   }
 }
