@@ -15,7 +15,7 @@ const routes: Routes = [
         path: 'module-a', component: ItemListComponent
       },
       {
-        path: 'module-a/item',
+        path: 'module-a/item/:id',
         component: ItemDetailsComponent
       },
       {

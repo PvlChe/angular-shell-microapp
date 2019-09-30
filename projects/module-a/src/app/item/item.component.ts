@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,14 +7,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-
+  @Input() item;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onDetailsClick() {
-    this.router.navigate(['module-a/item']);
+    this.router.navigate(['module-a/item/' + this.item._id]);
   }
 
 }
