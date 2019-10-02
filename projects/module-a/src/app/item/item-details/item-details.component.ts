@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
@@ -9,6 +9,8 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
+
+  @Output() routerChanges = new EventEmitter();
   item;
   amount: number[] = [];
   subscription: Subscription;
@@ -43,7 +45,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onBuyClick() {
-
+    this.router.navigate(['order']);
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,10 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
+  @Output() routerChanged: EventEmitter<any> = new EventEmitter();
 
   email = new FormControl('', [Validators.required, Validators.email]);
   name = new FormControl('', [Validators.required]);
@@ -31,10 +33,19 @@ export class LoginComponent {
     console.log('email click test', this.email.valid);
     console.log('pass click test', this.password.valid);
     if (this.password.valid && this.email.valid) {
-      this.http.get<any>('http://localhost:4000/item')
+      this.http.post<any>('http://localhost:4001/user/login', {email: this.email.value, password: this.password.value})
         .subscribe(item => {
-          console.log('test http get, items', item);
-        });
+          console.log('item', localStorage.getItem('userID'));
+
+          localStorage.setItem('userID', item._id);
+          console.log('item', localStorage.getItem('userID'));
+          this.router.navigate(['module-a']);
+
+        },
+          () => {
+          console.log('error test');
+          localStorage.setItem('userID', null);
+          });
     }
   }
 

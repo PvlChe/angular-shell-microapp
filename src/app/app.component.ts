@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StateService} from './state.service';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,14 @@ import {StateService} from './state.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private stateService: StateService) {
-
+  constructor(private stateService: StateService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
+  @Output() routerChanged: EventEmitter<any> = new EventEmitter();
 
   title = 'shell-app';
-  showFiller = false;
+  state = 'module-';
 
   config = {
     'module-a': {
@@ -33,6 +36,11 @@ export class AppComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        this.onRouterChanged(e);
+      }
+    });
     this.load('module-a');
     this.load('module-order');
     this.load('module-invoice');
@@ -49,11 +57,11 @@ export class AppComponent implements OnInit {
     content.appendChild(script);
 
     const element: HTMLElement = document.createElement(configItem.element);
-    content.appendChild(element);
-
-    element.addEventListener('message', msg => this.handleMessage(msg));
     element.setAttribute('state', 'init');
-
+    element.setAttribute('route', 'init');
+    element.setAttribute('data', 'init');
+    content.appendChild(element);
+    element.addEventListener('routerChanges', msg => this.handleMessage(msg));
     script.onerror = () => console.error(`error loading ${configItem.path}`);
 
 
@@ -61,7 +69,13 @@ export class AppComponent implements OnInit {
   }
 
   handleMessage(msg): void {
-    console.log('shell received message: ', msg.detail);
+    console.log('#######msg', msg);
+    this.stateService.setRoute(JSON.stringify(msg.detail));
+
   }
 
+  onRouterChanged(event) {
+    console.log('router chnged in shell main, event: ', event);
+    this.stateService.setRoute(JSON.stringify(event));
+  }
 }

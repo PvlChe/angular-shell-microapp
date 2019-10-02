@@ -35,39 +35,11 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-           <!-- <mat-form-field class="my-5 w-50">
-              <mat-label>Payment method</mat-label>
-              <mat-select #payment [required]="true">
-                <mat-option [value]="'Buy now'">
-                  <span>Buy now</span>
-                </mat-option>
-                <mat-option [value]="'Instalment'">
-                  <span>Instalment</span>
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="my-5 w-50" *ngIf="payment.value === 'Instalment'">
-              <mat-label>Months</mat-label>
-              <mat-select [required]="true">
-                <mat-option [value]="12">
-                  <span>12</span>
-                </mat-option>
-                <mat-option [value]="24">
-                  <span>24</span>
-                </mat-option>
-                <mat-option [value]="36">
-                  <span>36</span>
-                </mat-option>
-                <mat-option [value]="48">
-                  <span>48</span>
-                </mat-option>
-              </mat-select>
-            </mat-form-field>-->
             <div class="actions-container">
               <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
-                <a mat-raised-button color="primary" class="mx-auto my-5 w-25 text-white text-decoration-none"
-                   href="#/order" (click)="onBuyClick()">Buy
-                </a>
+                <button mat-raised-button color="primary" class="mx-auto my-5 w-25 text-white text-decoration-none"
+                   (click)="onBuyClick()">Buy
+                </button>
             </div>
           </div>
           <div class="w-50 py-5">

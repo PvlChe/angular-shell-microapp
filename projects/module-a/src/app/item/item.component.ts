@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 })
 export class ItemComponent implements OnInit {
   @Input() item;
+  @Output() routerChanges = new EventEmitter();
   constructor(private router: Router) { }
 
   ngOnInit() {

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class StateService {
 
     constructor() { }
 
-    private state$ = new Subject();
     private clients: HTMLElement[] = [];
 
     public registerClient(client: HTMLElement) {
@@ -17,5 +15,17 @@ export class StateService {
         for (const client of this.clients) {
             client.setAttribute('state', state);
         }
+    }
+
+    public setRoute(route: string) {
+      for (const client of this.clients) {
+        client.setAttribute('route', route);
+      }
+    }
+
+    public setData(data: string) {
+      for (const client of this.clients) {
+        client.setAttribute('data', data);
+      }
     }
 }
