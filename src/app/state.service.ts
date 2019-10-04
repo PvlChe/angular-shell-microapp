@@ -11,21 +11,36 @@ export class StateService {
         this.clients.push(client);
     }
 
-    public setState(state: string) {
+/*    public getClients(clients: string[]): string[] {
+      const foundedClients = [];
+      clients.forEach( name => {
+        foundedClients.push(document.querySelector(name));
+      });
+      return foundedClients;
+    }*/
+
+    public setState(name: string, state: string, clients?: string[]) {
+
         for (const client of this.clients) {
-            client.setAttribute('state', state);
+          if (clients) {
+            if (clients.indexOf(client.tagName.toLowerCase()) >= 0) {
+              client.setAttribute(name, state);
+            }
+          } else {
+            client.setAttribute(name, state);
+          }
         }
     }
-
-    public setRoute(route: string) {
+/*
+    public setRoute(route: string, clients?: string[]) {
       for (const client of this.clients) {
         client.setAttribute('route', route);
       }
     }
 
-    public setData(data: string) {
+    public setData(data: string, clients?: string[]) {
       for (const client of this.clients) {
         client.setAttribute('data', data);
       }
-    }
+    }*/
 }

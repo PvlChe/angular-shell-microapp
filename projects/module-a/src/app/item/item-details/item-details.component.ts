@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
+import {StateService} from '../../../../../../src/app/state.service';
 
 @Component({
   selector: 'app-item-details',
@@ -11,7 +12,10 @@ import {Subscription} from 'rxjs';
 export class ItemDetailsComponent implements OnInit {
 
   @Output() routerChanges = new EventEmitter();
+  @Output() onBuyItem = new EventEmitter();
+
   item;
+  quantity;
   amount: number[] = [];
   subscription: Subscription;
   constructor(private router: Router,
@@ -40,11 +44,14 @@ export class ItemDetailsComponent implements OnInit {
     });
   }
 
-  onRentClick() {
-
+  setQuantity(value) {
+    console.log('amount event', value);
+    this.quantity = value;
   }
 
+
   onBuyClick() {
+    this.onBuyItem.emit(JSON.stringify({item : this.item, quantity: this.quantity}));
     this.router.navigate(['order']);
   }
 

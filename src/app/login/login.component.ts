@@ -29,24 +29,17 @@ export class LoginComponent {
   }
 
   signIn() {
-    console.log('anmelden click test');
-    console.log('email click test', this.email.valid);
-    console.log('pass click test', this.password.valid);
     if (this.password.valid && this.email.valid) {
       this.http.post<any>('http://localhost:4001/user/login', {email: this.email.value, password: this.password.value})
         .subscribe(item => {
-          console.log('item', localStorage.getItem('userID'));
-
           localStorage.setItem('userID', item._id);
-          console.log('item', localStorage.getItem('userID'));
           this.router.navigate(['module-a']);
-
         },
           () => {
-          console.log('error test');
-          localStorage.setItem('userID', null);
+          delete localStorage.userID;
           });
     }
   }
+
 
 }

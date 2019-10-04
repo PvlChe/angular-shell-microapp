@@ -62,6 +62,10 @@ export class AppComponent implements OnInit {
     element.setAttribute('data', 'init');
     content.appendChild(element);
     element.addEventListener('routerChanges', msg => this.handleMessage(msg));
+    if (name === 'module-a') {
+      element.addEventListener('onBuyItem', event => this.onBuyItem(event));
+    }
+
     script.onerror = () => console.error(`error loading ${configItem.path}`);
 
 
@@ -70,12 +74,27 @@ export class AppComponent implements OnInit {
 
   handleMessage(msg): void {
     console.log('#######msg', msg);
-    this.stateService.setRoute(JSON.stringify(msg.detail));
+    this.stateService.setState('route', JSON.stringify(msg.detail));
 
   }
 
   onRouterChanged(event) {
     console.log('router chnged in shell main, event: ', event);
-    this.stateService.setRoute(JSON.stringify(event));
+    this.stateService.setState('route', JSON.stringify(event));
+  }
+
+  onBuyItem(event) {
+    console.log('on buy shell event: ', event);
+  }
+
+
+  signOut() {
+    delete localStorage.userID;
+    this.router.navigate(['login']);
+  }
+
+  isLogged() {
+    console.log('localStorage', !(localStorage.userID === undefined));
+    return !(localStorage.userID === undefined);
   }
 }

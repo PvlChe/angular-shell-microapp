@@ -7,7 +7,11 @@
         <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Katalog</a></li>
         <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Dashboard</a></li>
       </ul>
-      <a href="#/login" class="btn-link nav-link text-decoration-none text-white" mat-raised-button color="primary" class="h-50">Anmelden</a>
+      <button *ngIf="!isLogged(); else logout" routerLink="/login" mat-raised-button color="primary"  class="h-50">Anmelden</button>
+      <ng-template #logout>
+        <button mat-raised-button (click)="signOut()" color="primary" class="h-50">Abmelden</button>
+      </ng-template>
+
     </div>
   </mat-toolbar>
   <div id="content" class="flex-grow-1 col-md-12 m-auto">

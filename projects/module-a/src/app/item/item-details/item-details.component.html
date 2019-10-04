@@ -29,7 +29,7 @@
             <h5 class="mb-4">Order Details:</h5>
             <mat-form-field class="my-5 w-50">
               <mat-label>Amount</mat-label>
-              <mat-select [required]="true">
+              <mat-select [required]="true" (valueChange)="setQuantity($event)">
                 <mat-option *ngFor="let num of amount" [value]="num">
                   <span>{{num}}</span>
                 </mat-option>
@@ -58,7 +58,7 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="Rent">
+<!--      <mat-tab label="Rent">
         <div class="d-flex">
           <div class="w-50 py-5 d-flex flex-column">
             <h5 class="mb-4">Order Details:</h5>
@@ -126,7 +126,7 @@
             </p>
           </div>
         </div>
-      </mat-tab>
+      </mat-tab>-->
     </mat-tab-group>
   </div>
 </div>
