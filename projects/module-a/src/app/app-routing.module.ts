@@ -21,7 +21,7 @@ const routes: Routes = [
       {
         path: '**', component: EmptyComponent
       }
-    ], {useHash: true})
+    ])
   ],
   exports: [
     RouterModule

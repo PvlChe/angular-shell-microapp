@@ -43,7 +43,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onBuyClick() {
-
+    this.router.navigate(['order']);
   }
 
 }

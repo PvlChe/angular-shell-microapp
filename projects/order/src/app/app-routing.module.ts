@@ -12,7 +12,7 @@ import {EmptyComponent} from './empty/empty.component';
       {
         path: '**', component: EmptyComponent
       }
-    ], {useHash: true})
+    ])
   ],
   exports: [
     RouterModule

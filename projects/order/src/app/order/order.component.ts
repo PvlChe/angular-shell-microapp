@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
   }
 
   onSaveClick() {
+    this.router.navigate(['invoice']);
     console.log('test a click');
   }
 
