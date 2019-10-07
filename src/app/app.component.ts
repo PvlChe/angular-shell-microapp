@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StateService} from './state.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MessageService} from './message.service';
+import {UserService} from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
     private stateService: StateService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userService: UserService
   ) {
   }
   user;
@@ -41,9 +43,12 @@ export class AppComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.messageService.userCompleted$.subscribe( u => {
-      this.user = u;
-    });
+    if (localStorage.userID) {
+      this.userService.getUserByID(localStorage.userID).subscribe( user => {
+        this.user = user;
+      });
+    }
+    this.user = this.messageService.getUser();
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.onRouterChanged(e);
@@ -92,13 +97,16 @@ export class AppComponent implements OnInit {
   }
 
   onBuyItem(event) {
+    console.log('this.messageService.getUser()', this.messageService.getUser());
     console.log('on buy shell event: ', event);
     const item = event.detail;
     const data = {
       user: this.user,
       item
     };
-    this.stateService.setState('data', JSON.stringify(data), ['module-order']);
+    this.router.navigate(['order']).then( () => {
+      this.stateService.setState('data', JSON.stringify(data), ['module-order']);
+    });
   }
 
 

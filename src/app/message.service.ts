@@ -4,17 +4,19 @@ import {Subject} from 'rxjs';
 @Injectable()
 export class MessageService {
   // Observable string sources
-  private logged = new Subject<object>();
+  private user;
 
   // Observable string streams
-  userCompleted$ = this.logged.asObservable();
+  getUser() {
+    return this.user;
+  }
 
   signIn(user: object) {
-    this.logged.next(user);
+    this.user = user;
   }
 
   clearUser() {
-    this.logged.next();
+    this.user = undefined;
   }
 
   constructor() { }

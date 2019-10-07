@@ -4,6 +4,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MessageService} from '../message.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userService: UserService
   ) {
 
   }
@@ -35,13 +37,11 @@ export class LoginComponent {
 
   signIn() {
     if (this.password.valid && this.email.valid) {
-      console.log('check login signIn');
-      this.http.post<any>('http://localhost:4001/user/login', {email: this.email.value, password: this.password.value})
+      this.userService.login(this.email.value, this.password.value)
         .subscribe(item => {
           localStorage.setItem('userID', item._id);
           this.messageService.signIn(item);
           this.router.navigate(['module-a']);
-          console.log('check login data from backend', item);
         },
           () => {
           delete localStorage.userID;

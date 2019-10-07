@@ -13,6 +13,7 @@ import { EmptyComponent } from './empty/empty.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UserWidgetComponent } from './user-widget/user-widget.component';
 import {MessageService} from './message.service';
+import {UserService} from './user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {MessageService} from './message.service';
     MatInputModule
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, UserService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

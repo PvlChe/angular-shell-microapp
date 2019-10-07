@@ -8,15 +8,15 @@
     </mat-radio-group>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Firstname</mat-label>
-      <input matInput #first [required]="true" [(value)] = "data.user.name">
+      <input matInput #first [required]="true" [value]="data.user.name">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Lastname</mat-label>
-      <input matInput #last [required]="true">
+      <input matInput #last [required]="true" [value]="data.user.name">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Email</mat-label>
-      <input matInput #email [required]="true">
+      <input matInput #email [required]="true" [value]="data.user.email">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Adresse</mat-label>
@@ -42,12 +42,16 @@
     <span class="mb-2">&nbsp;{{plz.value + ' ' + ort.value}}</span>
     <mat-divider></mat-divider>
     <h5 class="my-3">Your order data:</h5>
-    <mat-label class="mb-2"><b>Name:</b></mat-label>
-    <span class="mb-2">&nbsp;{{(anrede ? anrede + ' ' : '') + first.value + ' ' + last.value}}</span>
-    <mat-label class="mb-2"><b>Email:</b></mat-label>
-    <span class="mb-2">&nbsp;{{email.value}}</span>
-    <mat-label class="mb-2"><b>Adresse:</b></mat-label>
-    <span>&nbsp;{{adresse.value}}</span>
+    <mat-label class="mb-2"><b>Item:</b></mat-label>
+    <span class="mb-2">&nbsp;{{data.item.item.brand + ' ' +
+    data.item.item.model + ', ' +
+    data.item.item.color + ', ' +
+    data.item.item.volume
+      }}</span>
+    <mat-label class="mb-2"><b>Amount:</b></mat-label>
+    <span class="mb-2">&nbsp;{{data.item.amount}}</span>
+    <mat-label class="mb-2"><b>Total price, $:</b></mat-label>
+    <span>&nbsp;{{data.item.amount*10}}</span>
     <mat-checkbox class="mt-5">Einverstanden mit AGB</mat-checkbox>
   </div>
     <a mat-raised-button color="accent" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"

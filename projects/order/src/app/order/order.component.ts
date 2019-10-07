@@ -17,15 +17,15 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.messageService.dataCompleted$.subscribe( data => {
-      this.data = data;
-      console.log('#####this.data order: ', this.data);
-
-    });
+    console.log('order init');
+    console.log('this.messageService.getData()', this.messageService.getData());
+    this.data = this.messageService.getData();
   }
 
   onSaveClick() {
     console.log('test a click');
+    console.log(this.data);
   }
 
 }
+

@@ -4,18 +4,22 @@ import {Subject} from 'rxjs';
 @Injectable()
 export class MessageService {
   // Observable string sources
-  private data = new Subject<object>();
+  private data;
 
   // Observable string streams
-  dataCompleted$ = this.data.asObservable();
+
 
   setData(data: object) {
     console.log('set data check#######, data: ', data);
-    this.data.next(data);
+    this.data = data;
+  }
+
+  getData() {
+    return this.data;
   }
 
   clearData() {
-    this.data.next();
+    this.data = undefined;
   }
 
   constructor() { }
