@@ -3,6 +3,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private messageService: MessageService
+  ) {
 
   }
   @Output() routerChanged: EventEmitter<any> = new EventEmitter();
@@ -30,13 +35,17 @@ export class LoginComponent {
 
   signIn() {
     if (this.password.valid && this.email.valid) {
+      console.log('check login signIn');
       this.http.post<any>('http://localhost:4001/user/login', {email: this.email.value, password: this.password.value})
         .subscribe(item => {
           localStorage.setItem('userID', item._id);
+          this.messageService.signIn(item);
           this.router.navigate(['module-a']);
+          console.log('check login data from backend', item);
         },
           () => {
           delete localStorage.userID;
+          this.messageService.clearUser();
           });
     }
   }

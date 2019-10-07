@@ -9,15 +9,21 @@ import {EmptyComponent} from './empty/empty.component';
 import {MatButtonModule, MatCheckboxModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatRadioModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { OrderWidgetComponent } from './order-widget/order-widget.component';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {MessageService} from './message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
-    EmptyComponent
+    EmptyComponent,
+    OrderWidgetComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatRadioModule,
@@ -26,9 +32,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [AppComponent]

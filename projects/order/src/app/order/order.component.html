@@ -1,6 +1,6 @@
-<div class="m-5 d-flex flex-wrap">
+<div class="m-5 d-flex flex-wrap" *ngIf="data">
   <h2 class="w-100 text-center my-5">Delievery Details</h2>
-  <div class="input-container d-flex flex-column w-50 px-5">
+  <div class="input-container d-flex flex-column w-50 px-5" >
     <mat-label class="mb-2">Anrede:</mat-label>
     <mat-radio-group [(ngModel)]="anrede">
       <mat-radio-button class="example-margin mr-2" value="Herr">Herr</mat-radio-button>
@@ -8,7 +8,7 @@
     </mat-radio-group>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Firstname</mat-label>
-      <input matInput #first [required]="true">
+      <input matInput #first [required]="true" [(value)] = "data.user.name">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Lastname</mat-label>

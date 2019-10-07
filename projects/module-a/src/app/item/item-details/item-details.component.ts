@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
-import {StateService} from '../../../../../../src/app/state.service';
+import {MessageService} from '../../message.service';
 
 @Component({
   selector: 'app-item-details',
@@ -10,17 +10,16 @@ import {StateService} from '../../../../../../src/app/state.service';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-
+  selected = 1;
   @Output() routerChanges = new EventEmitter();
-  @Output() onBuyItem = new EventEmitter();
 
   item;
-  quantity;
   amount: number[] = [];
   subscription: Subscription;
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private messageService: MessageService) { }
 
   ngOnInit() {
     this.subscription = this.route.params
@@ -46,12 +45,14 @@ export class ItemDetailsComponent implements OnInit {
 
   setQuantity(value) {
     console.log('amount event', value);
-    this.quantity = value;
   }
 
 
   onBuyClick() {
-    this.onBuyItem.emit(JSON.stringify({item : this.item, quantity: this.quantity}));
+    console.log('check on buy click in details');
+    const order = {item: this.item, amount: this.selected};
+    this.messageService.order(order);
+    const orderData = {};
     this.router.navigate(['order']);
   }
 

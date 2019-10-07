@@ -5,7 +5,7 @@
       <ul class="list-unstyled m-0 d-flex">
         <li class="d-flex align-items-center nav-link"><h1 class="border rounded px-2">Shell-app</h1></li>
         <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Katalog</a></li>
-        <li><a href="#/module-a" class="btn-link nav-link text-white border-left">Dashboard</a></li>
+        <li><a href="#/dashboard" class="btn-link nav-link text-white border-left">Dashboard</a></li>
       </ul>
       <button *ngIf="!isLogged(); else logout" routerLink="/login" mat-raised-button color="primary"  class="h-50">Anmelden</button>
       <ng-template #logout>

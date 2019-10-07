@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Router} from '@angular/router';
+import {MessageService} from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,10 @@ export class AppComponent implements OnInit , OnChanges {
   @Input() route: string;
   @Input() data: string;
   @Output() routerChanges = new EventEmitter();
-
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private messageService: MessageService
+    ) {
 
   }
 
@@ -20,10 +23,13 @@ export class AppComponent implements OnInit , OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('order changes', changes);
-    console.log('test detect order changes, state', this.state);
     if (changes.route) {
+      console.log('test detect order changes, route', JSON.parse(this.route).url);
       this.router.navigate([JSON.parse(this.route).url]);
+    }
+    if (changes.data && changes.data.currentValue !== 'init') {
+      console.log('data changes in order, data', JSON.parse(this.data));
+      this.messageService.setData(JSON.parse(this.data));
     }
   }
 }

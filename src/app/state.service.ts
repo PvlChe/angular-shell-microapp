@@ -23,6 +23,9 @@ export class StateService {
 
         for (const client of this.clients) {
           if (clients) {
+            console.log('client.tagName:', client.tagName);
+            console.log('client.tagName.toLowerCase(): ', client.tagName.toLowerCase());
+            console.log('client gefunden, boolean: ', clients.indexOf(client.tagName.toLowerCase()) >= 0);
             if (clients.indexOf(client.tagName.toLowerCase()) >= 0) {
               client.setAttribute(name, state);
             }

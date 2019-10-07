@@ -20,6 +20,7 @@ import { ItemDetailsComponent } from './item/item-details/item-details.component
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {HttpClientModule} from '@angular/common/http';
+import {MessageService} from './message.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,9 @@ import {HttpClientModule} from '@angular/common/http';
     MatMomentDateModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [AppComponent]

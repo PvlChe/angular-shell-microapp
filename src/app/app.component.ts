@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StateService} from './state.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {MessageService} from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,14 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private stateService: StateService,
-              private route: ActivatedRoute,
-              private router: Router) {
+  constructor(
+    private stateService: StateService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private messageService: MessageService
+  ) {
   }
+  user;
   @Output() routerChanged: EventEmitter<any> = new EventEmitter();
 
   title = 'shell-app';
@@ -36,6 +41,9 @@ export class AppComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.messageService.userCompleted$.subscribe( u => {
+      this.user = u;
+    });
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.onRouterChanged(e);
@@ -63,7 +71,7 @@ export class AppComponent implements OnInit {
     content.appendChild(element);
     element.addEventListener('routerChanges', msg => this.handleMessage(msg));
     if (name === 'module-a') {
-      element.addEventListener('onBuyItem', event => this.onBuyItem(event));
+      element.addEventListener('buy', event => this.onBuyItem(event));
     }
 
     script.onerror = () => console.error(`error loading ${configItem.path}`);
@@ -79,12 +87,18 @@ export class AppComponent implements OnInit {
   }
 
   onRouterChanged(event) {
-    console.log('router chnged in shell main, event: ', event);
+    console.log('router changed in shell main, event: ', event);
     this.stateService.setState('route', JSON.stringify(event));
   }
 
   onBuyItem(event) {
     console.log('on buy shell event: ', event);
+    const item = event.detail;
+    const data = {
+      user: this.user,
+      item
+    };
+    this.stateService.setState('data', JSON.stringify(data), ['module-order']);
   }
 
 

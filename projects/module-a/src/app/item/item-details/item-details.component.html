@@ -29,8 +29,8 @@
             <h5 class="mb-4">Order Details:</h5>
             <mat-form-field class="my-5 w-50">
               <mat-label>Amount</mat-label>
-              <mat-select [required]="true" (valueChange)="setQuantity($event)">
-                <mat-option *ngFor="let num of amount" [value]="num">
+              <mat-select [(value)]="selected" [required]="true">
+                <mat-option *ngFor="let num of amount" value="{{num}}">
                   <span>{{num}}</span>
                 </mat-option>
               </mat-select>

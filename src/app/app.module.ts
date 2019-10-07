@@ -11,13 +11,16 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { EmptyComponent } from './empty/empty.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UserWidgetComponent } from './user-widget/user-widget.component';
+import {MessageService} from './message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PushPipe,
     LoginComponent,
-    EmptyComponent
+    EmptyComponent,
+    UserWidgetComponent
   ],
   imports: [
     HttpClientModule,
@@ -26,7 +29,9 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: '**', component: EmptyComponent}
+      {path: 'dashboard', component: UserWidgetComponent},
+      {path: '**', component: EmptyComponent},
+
     ], { useHash: true }),
 
     // Material Design
@@ -38,7 +43,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatInputModule
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

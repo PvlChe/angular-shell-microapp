@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class ItemComponent implements OnInit {
   @Input() item;
   @Output() routerChanges = new EventEmitter();
+  @Output() buy = new EventEmitter();
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -18,4 +19,7 @@ export class ItemComponent implements OnInit {
     this.router.navigate(['module-a/item/' + this.item._id]);
   }
 
+  onBuyItem(event) {
+    this.buy.emit(event.value);
+  }
 }

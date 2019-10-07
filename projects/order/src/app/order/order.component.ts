@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {log} from 'util';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-order',
@@ -9,9 +10,18 @@ import {log} from 'util';
 })
 export class OrderComponent implements OnInit {
   anrede;
-  constructor(private router: Router) { }
+  data;
+  constructor(
+    private router: Router,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
+    this.messageService.dataCompleted$.subscribe( data => {
+      this.data = data;
+      console.log('#####this.data order: ', this.data);
+
+    });
   }
 
   onSaveClick() {
