@@ -17,6 +17,6 @@ export class UserService {
   }
 
   getUserByID(id: string) {
-    return this.http.post<any>('http://localhost:4001/user/login', {_id: id});
+    return this.http.get<any>('http://localhost:4001/user/' + id);
   }
 }

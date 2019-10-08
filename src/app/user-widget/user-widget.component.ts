@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user-widget',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-widget.component.scss']
 })
 export class UserWidgetComponent implements OnInit {
-
-  constructor() { }
+  user;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log('hello from user widget');
+    if (localStorage.userID) {
+      this.userService.getUserByID(localStorage.userID).subscribe(
+        user => {
+          this.user = user[0];
+        }
+      );
+    }
   }
 
 }

@@ -3,11 +3,7 @@ import {Subject} from 'rxjs';
 
 @Injectable()
 export class MessageService {
-  // Observable string sources
   private data;
-
-  // Observable string streams
-
 
   setData(data: object) {
     console.log('set data check#######, data: ', data);

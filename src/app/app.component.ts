@@ -45,7 +45,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if (localStorage.userID) {
       this.userService.getUserByID(localStorage.userID).subscribe( user => {
-        this.user = user;
+        console.log('get user in main from localStorage: ', user);
+        this.user = user[0];
       });
     }
     this.user = this.messageService.getUser();
@@ -97,14 +98,14 @@ export class AppComponent implements OnInit {
   }
 
   onBuyItem(event) {
-    console.log('this.messageService.getUser()', this.messageService.getUser());
-    console.log('on buy shell event: ', event);
+
     const item = event.detail;
     const data = {
       user: this.user,
       item
     };
     this.router.navigate(['order']).then( () => {
+      console.log('this user in main on buy', this.user);
       this.stateService.setState('data', JSON.stringify(data), ['module-order']);
     });
   }
