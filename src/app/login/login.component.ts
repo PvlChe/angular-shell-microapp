@@ -23,7 +23,8 @@ export class LoginComponent {
   @Output() routerChanged: EventEmitter<any> = new EventEmitter();
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  name = new FormControl('', [Validators.required]);
+  firstname = new FormControl('', [Validators.required]);
+  lastname = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
 
@@ -31,8 +32,9 @@ export class LoginComponent {
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
       this.email.hasError('email') ? 'Not a valid email' :
-        this.name.hasError('required') ? 'You must enter a value' :
-          this.password.hasError('required') ? 'You must enter a value' : '';
+        this.firstname.hasError('required') ? 'You must enter a value' :
+          this.lastname.hasError('required') ? 'You must enter a value' :
+            this.password.hasError('required') ? 'You must enter a value' : '';
   }
 
   signIn() {

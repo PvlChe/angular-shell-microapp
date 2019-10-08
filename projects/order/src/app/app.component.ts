@@ -11,6 +11,7 @@ export class AppComponent implements OnInit , OnChanges {
   @Input() route: string;
   @Input() data: string;
   @Output() routerChanges = new EventEmitter();
+  @Output() order = new EventEmitter();
   constructor(
     private router: Router,
     private messageService: MessageService

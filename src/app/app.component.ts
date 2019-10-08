@@ -95,6 +95,9 @@ export class AppComponent implements OnInit {
   onRouterChanged(event) {
     console.log('router changed in shell main, event: ', event);
     this.stateService.setState('route', JSON.stringify(event));
+    if (event.url === 'dashboard') {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   onBuyItem(event) {
@@ -109,6 +112,8 @@ export class AppComponent implements OnInit {
       this.stateService.setState('data', JSON.stringify(data), ['module-order']);
     });
   }
+
+
 
 
   signOut() {
