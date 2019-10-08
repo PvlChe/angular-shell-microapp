@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {MessageService} from './message.service';
 
 @Component({
@@ -20,6 +20,11 @@ export class AppComponent implements OnInit , OnChanges {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(e => {
+    if (e instanceof NavigationEnd) {
+      this.routerChanges.emit(e);
+    }
+  });
     this.router.initialNavigation();
   }
 
