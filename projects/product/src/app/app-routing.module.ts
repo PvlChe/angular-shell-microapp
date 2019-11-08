@@ -12,10 +12,10 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot([
       {
-        path: 'module-a', component: ItemListComponent
+        path: 'product', component: ItemListComponent
       },
       {
-        path: 'module-a/item/:id',
+        path: 'product/item/:id',
         component: ItemDetailsComponent
       },
       {

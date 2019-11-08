@@ -26,6 +26,14 @@ export class AppComponent implements OnInit , OnChanges {
     }
   });
     this.router.initialNavigation();
+
+    window.addEventListener('back_click', ( event: CustomEvent) => {
+      console.log('Event with message from produkt: ', event.detail.message);
+    });
+    window.addEventListener('back-event', (event) => {
+
+      console.log('Event without message from produkt: ', event);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -47,7 +47,7 @@ export class OrderComponent implements OnInit {
     this.orderService.saveOrder(data).subscribe(
       dataRes => {
         console.log('data', dataRes);
-        this.router.navigate(['module-a']);
+        this.router.navigate(['product']);
       },
       error => {
         console.log('error', error);

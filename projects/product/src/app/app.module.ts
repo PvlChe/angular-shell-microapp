@@ -58,10 +58,10 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-    if (!customElements.get('module-a')) {
+    if (!customElements.get('module-product')) {
       const appElement = createCustomElement(AppComponent, {injector: this.injector});
-      customElements.define('module-a', appElement);
-      console.log('defined module-a');
+      customElements.define('module-product', appElement);
+      console.log('defined product');
     }
   }
 }

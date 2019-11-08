@@ -38,9 +38,14 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   onBackClick() {
-    this.router.navigate(['module-a']).then( () => {
+/*    this.router.navigate(['product']).then( () => {
         this.router.initialNavigation();
-    });
+    });*/
+    const event = new CustomEvent('back_click', {detail: {message: 'hello from Product Module'}});
+    window.dispatchEvent(event);
+    console.log('event sended');
+    const event2 = new Event('back-event');
+    window.dispatchEvent(event2);
   }
 
   setQuantity(value) {

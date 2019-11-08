@@ -25,20 +25,15 @@ export class AppComponent implements OnInit {
   state = 'module-';
 
   config = {
-    'module-a': {
+    'module-product': {
       loaded: false,
       path: ['http://127.0.0.1:61268/main.js'],
-      element: 'module-a'
+      element: 'module-product'
     },
     'module-order': {
       loaded: false,
       path: ['http://127.0.0.1:60000/main.js'],
       element: 'module-order'
-    },
-    'module-invoice': {
-      loaded: false,
-      path: ['http://127.0.0.1:60001/main.js'],
-      element: 'module-invoice'
     }
   };
 
@@ -55,9 +50,8 @@ export class AppComponent implements OnInit {
         this.onRouterChanged(e);
       }
     });
-    this.load('module-a');
+    this.load('module-product');
     this.load('module-order');
-    this.load('module-invoice');
   }
 
   load(name: string): void {
@@ -76,7 +70,7 @@ export class AppComponent implements OnInit {
     element.setAttribute('data', 'init');
     content.appendChild(element);
     element.addEventListener('routerChanges', msg => this.handleMessage(msg));
-    if (name === 'module-a') {
+    if (name === 'module-product') {
       element.addEventListener('buy', event => this.onBuyItem(event));
     }
 

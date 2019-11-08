@@ -16,7 +16,7 @@ export class ItemComponent implements OnInit {
   }
 
   onDetailsClick() {
-    this.router.navigate(['module-a/item/' + this.item._id]);
+    this.router.navigate(['product/item/' + this.item._id]);
   }
 
   onBuyItem(event) {

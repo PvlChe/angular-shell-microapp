@@ -34,10 +34,10 @@ export class AppComponent implements OnInit , OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('module-a changes', changes);
+    console.log('product changes', changes);
     console.log('test detect changes, state', this.state);
     if (changes.route) {
-      console.log('check module-a route: ', JSON.parse(this.route).url);
+      console.log('check product route: ', JSON.parse(this.route).url);
       this.router.navigate([JSON.parse(this.route).url]);
     }
 

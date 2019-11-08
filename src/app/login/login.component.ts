@@ -43,7 +43,7 @@ export class LoginComponent {
         .subscribe(item => {
           localStorage.setItem('userID', item._id);
           this.messageService.signIn(item);
-          this.router.navigate(['module-a']);
+          this.router.navigate(['product']);
         },
           () => {
           delete localStorage.userID;
