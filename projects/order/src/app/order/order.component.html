@@ -43,15 +43,15 @@
     <mat-divider></mat-divider>
     <h5 class="my-3">Your order data:</h5>
     <mat-label class="mb-2"><b>Item:</b></mat-label>
-    <span class="mb-2">&nbsp;{{data.item.item.brand + ' ' +
-    data.item.item.model + ', ' +
-    data.item.item.color + ', ' +
-    data.item.item.volume
+    <span class="mb-2">&nbsp;{{data.item.brand + ' ' +
+    data.item.model + ', ' +
+    data.item.color + ', ' +
+    data.item.volume
       }}</span>
     <mat-label class="mb-2"><b>Amount:</b></mat-label>
     <span class="mb-2">&nbsp;{{data.item.amount}}</span>
     <mat-label class="mb-2"><b>Total price:</b></mat-label>
-    <span>&nbsp;{{data.item.amount*data.item.item.price + '$'}}</span>
+    <span>&nbsp;{{data.item.amount*data.item.price + '$'}}</span>
     <mat-checkbox class="mt-5">Einverstanden mit AGB</mat-checkbox>
   </div>
     <button mat-raised-button color="accent" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"

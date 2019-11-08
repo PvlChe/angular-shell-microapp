@@ -3,19 +3,31 @@ import {Subject} from 'rxjs';
 
 @Injectable()
 export class MessageService {
-  private data;
+  private user;
+  private item;
 
-  setData(data: object) {
-    console.log('set data check#######, data: ', data);
-    this.data = data;
+  setUser(user: object) {
+    this.user = user;
   }
 
-  getData() {
-    return this.data;
+  setItem(item: object) {
+    this.item = item;
   }
 
-  clearData() {
-    this.data = undefined;
+  getUser() {
+    return this.user;
+  }
+
+  getItem() {
+    return this.item;
+  }
+
+  clearUserData() {
+    this.user = undefined;
+  }
+
+  clearItemData() {
+    this.item = undefined;
   }
 
   constructor() { }

@@ -54,10 +54,12 @@ export class ItemDetailsComponent implements OnInit {
 
 
   onBuyClick() {
-    this.router.navigate(['order']);
-    console.log('check on buy click in details');
+    const event = new CustomEvent('route', {detail: {route: 'order', orderData:  this.item}});
+    window.dispatchEvent(event);
+    // this.router.navigate(['order']);
+/*    console.log('check on buy click in details');
     const order = {item: this.item, amount: this.selected};
-    this.messageService.order(order);
+    this.messageService.order(order);*/
 
   }
 

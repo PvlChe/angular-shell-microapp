@@ -38,20 +38,26 @@ export class AppComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.load('module-product');
+    this.load('module-order');
     if (localStorage.userID) {
       this.userService.getUserByID(localStorage.userID).subscribe( user => {
         console.log('get user in main from localStorage: ', user);
         this.user = user[0];
+        const event = new CustomEvent('singIn', {detail: {user: this.user}});
+        window.dispatchEvent(event);
       });
     }
-    this.user = this.messageService.getUser();
+    // this.user = this.messageService.getUser();
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.onRouterChanged(e);
       }
     });
-    this.load('module-product');
-    this.load('module-order');
+    window.addEventListener('route', (event: CustomEvent) => {
+      console.log('###DEBUG_SHELL: route event.detail.route: ', event.detail.route);
+      this.router.navigate([event.detail.route]);
+    });
   }
 
   load(name: string): void {
@@ -69,10 +75,10 @@ export class AppComponent implements OnInit {
     element.setAttribute('route', 'init');
     element.setAttribute('data', 'init');
     content.appendChild(element);
-    element.addEventListener('routerChanges', msg => this.handleMessage(msg));
+/*    element.addEventListener('routerChanges', msg => this.handleMessage(msg));
     if (name === 'module-product') {
       element.addEventListener('buy', event => this.onBuyItem(event));
-    }
+    }*/
 
     script.onerror = () => console.error(`error loading ${configItem.path}`);
 
@@ -88,10 +94,9 @@ export class AppComponent implements OnInit {
 
   onRouterChanged(event) {
     console.log('router changed in shell main, event: ', event);
-    this.stateService.setState('route', JSON.stringify(event));
-    if (event.url === 'dashboard') {
-      this.router.navigate(['dashboard']);
-    }
+    const routerEvent = new CustomEvent('route', { detail: { route: event.url}});
+    window.dispatchEvent(routerEvent);
+    // this.stateService.setState('route', JSON.stringify(event));
   }
 
   onBuyItem(event) {

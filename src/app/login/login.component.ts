@@ -40,14 +40,17 @@ export class LoginComponent {
   signIn() {
     if (this.password.valid && this.email.valid) {
       this.userService.login(this.email.value, this.password.value)
-        .subscribe(item => {
-          localStorage.setItem('userID', item._id);
-          this.messageService.signIn(item);
+        .subscribe(user => {
+          localStorage.setItem('userID', user._id);
+          // this.messageService.signIn(user);
+          const event = new CustomEvent('signIn', {detail: {user}});
+          window.dispatchEvent(event);
+          console.log('###DEBUG_LOGIN: singIn event send, user', user);
           this.router.navigate(['product']);
         },
           () => {
           delete localStorage.userID;
-          this.messageService.clearUser();
+          // this.messageService.clearUser();
           });
     }
   }

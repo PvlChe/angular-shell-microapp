@@ -25,10 +25,14 @@ export class AppComponent implements OnInit , OnChanges {
       console.log('ordered in main component, item: ', order);
       this.buy.emit(order);
     });
-    this.router.events.subscribe(e => {
+/*    this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         this.routerChanges.emit(e);
       }
+    });*/
+    window.addEventListener('route', (event: CustomEvent) => {
+      console.log('###DEBUG_PRODUCT: route event: ', event);
+      this.router.navigate([event.detail.route]);
     });
     this.router.initialNavigation();
   }
@@ -36,15 +40,17 @@ export class AppComponent implements OnInit , OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log('product changes', changes);
     console.log('test detect changes, state', this.state);
-    if (changes.route) {
+/*    if (changes.route) {
       console.log('check product route: ', JSON.parse(this.route).url);
       this.router.navigate([JSON.parse(this.route).url]);
-    }
+    }*/
 
   }
 
   onBuy(event) {
-    console.log('order main event on buy: ', event);
-    this.buy.emit(event.value);
+/*    console.log('order main event on buy: ', event);
+    this.buy.emit(event.value);*/
+/*    const routerEvent = new CustomEvent('route', { detail: { route: 'order'}});
+    window.dispatchEvent(routerEvent);*/
   }
 }

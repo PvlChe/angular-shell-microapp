@@ -11,7 +11,10 @@ import {OrderService} from '../order.service';
 })
 export class OrderComponent implements OnInit {
   anrede;
-  data;
+  data: {
+    user: any,
+    item: any
+  };
   adresse = '';
   plz = '';
   ort = '';
@@ -23,9 +26,7 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('order init');
-    console.log('this.messageService.getData()', this.messageService.getData());
-    this.data = this.messageService.getData();
+    this.data = { user: this.messageService.getUser(), item: this.messageService.getItem()};
   }
 
   onSaveClick() {
@@ -33,11 +34,11 @@ export class OrderComponent implements OnInit {
     console.log(this.data);
     const data = {
       userID: this.data.user._id,
-      itemID: this.data.item.item._id,
-      itemModel: this.data.item.item.model,
-      itemBrand: this.data.item.item.brand,
-      itemColor: this.data.item.item.color,
-      itemVolume: this.data.item.item.volume,
+      itemID: this.data.item._id,
+      itemModel: this.data.item.model,
+      itemBrand: this.data.item.brand,
+      itemColor: this.data.item.color,
+      itemVolume: this.data.item.volume,
       email: this.data.user.email,
       adresse: this.adresse,
       plz: this.plz,
@@ -47,7 +48,8 @@ export class OrderComponent implements OnInit {
     this.orderService.saveOrder(data).subscribe(
       dataRes => {
         console.log('data', dataRes);
-        this.router.navigate(['product']);
+        const event = new CustomEvent('route', {detail: {route: 'dashboard'}});
+        window.dispatchEvent(event);
       },
       error => {
         console.log('error', error);
