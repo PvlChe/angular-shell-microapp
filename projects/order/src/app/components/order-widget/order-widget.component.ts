@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../order.service';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-order-widget',
@@ -12,11 +12,14 @@ export class OrderWidgetComponent implements OnInit {
 
   orders;
   ngOnInit() {
-    this.orderService.getOrder(localStorage.userID).subscribe(
+    this.getOrder(localStorage.userID).subscribe(
       data => {
-        console.log('data from widget', data);
         this.orders = data;
       }
     );
+  }
+
+  getOrder(id: string) {
+    return this.orderService.getOrder(id);
   }
 }

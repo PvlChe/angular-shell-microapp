@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../user.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-user-widget',
@@ -12,7 +12,7 @@ export class UserWidgetComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.userID) {
-      this.userService.getUserByID(localStorage.userID).subscribe(
+      this.getUser(localStorage.userID).subscribe(
         user => {
           this.user = user[0];
         }
@@ -20,4 +20,7 @@ export class UserWidgetComponent implements OnInit {
     }
   }
 
+  getUser(id: string) {
+    return this.userService.getUserByID(id);
+  }
 }

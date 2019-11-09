@@ -1,10 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {FormControl, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {MessageService} from '../message.service';
-import {UserService} from '../user.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +14,10 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private messageService: MessageService,
     private userService: UserService
   ) {
 
   }
-  @Output() routerChanged: EventEmitter<any> = new EventEmitter();
 
   email = new FormControl('', [Validators.required, Validators.email]);
   firstname = new FormControl('', [Validators.required]);
@@ -39,21 +36,23 @@ export class LoginComponent {
 
   signIn() {
     if (this.password.valid && this.email.valid) {
-      this.userService.login(this.email.value, this.password.value)
-        .subscribe(user => {
-          localStorage.setItem('userID', user._id);
-          // this.messageService.signIn(user);
-          const event = new CustomEvent('signIn', {detail: {user}});
-          window.dispatchEvent(event);
-          console.log('###DEBUG_LOGIN: singIn event send, user', user);
-          this.router.navigate(['product']);
+      this.userService.login(this.email.value, this.password.value).subscribe(
+        user => {
+          this.onLogin(user);
         },
-          () => {
+        () => {
           delete localStorage.userID;
-          // this.messageService.clearUser();
-          });
+        });
     }
   }
 
+  onLogin(user) {
+    localStorage.setItem('userID', user._id);
 
+    const event = new CustomEvent('auth', {detail: {user}});
+    window.dispatchEvent(event);
+    console.log('###DEBUG_LOGIN: singIn event send, user', user);
+
+    this.router.navigate(['product']);
+  }
 }

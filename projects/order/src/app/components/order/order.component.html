@@ -54,6 +54,9 @@
     <span>&nbsp;{{data.item.amount*data.item.price + '$'}}</span>
     <mat-checkbox class="mt-5">Einverstanden mit AGB</mat-checkbox>
   </div>
+  <button mat-raised-button color="primary" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
+          (click)="onCancelClick()">Cancel
+  </button>
     <button mat-raised-button color="accent" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
        (click)="onSaveClick()">Save
     </button>

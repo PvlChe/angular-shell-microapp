@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,18 +8,11 @@ import {Router} from '@angular/router';
 })
 export class ItemComponent implements OnInit {
   @Input() item;
-  @Output() routerChanges = new EventEmitter();
-  @Output() buy = new EventEmitter();
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onDetailsClick() {
     this.router.navigate(['product/item/' + this.item._id]);
-  }
-
-  onBuyItem(event) {
-    this.buy.emit(event.value);
   }
 }

@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app.component';
 import {createCustomElement} from '@angular/elements';
 import {AppRoutingModule} from './app-routing.module';
-import { OrderComponent } from './order/order.component';
-import {EmptyComponent} from './empty/empty.component';
+import { OrderComponent } from './components/order/order.component';
+import {EmptyComponent} from './components/empty/empty.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -17,11 +17,11 @@ import {
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { OrderWidgetComponent } from './order-widget/order-widget.component';
+import { OrderWidgetComponent } from './components/order-widget/order-widget.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {MessageService} from './message.service';
-import {OrderService} from './order.service';
+import {MessageService} from './services/message.service';
+import {OrderService} from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ export class AppModule {
     if (!customElements.get('module-order')) {
       const appElement = createCustomElement(AppComponent, {injector: this.injector});
       customElements.define('module-order', appElement);
+      console.log('defined order');
     }
   }
 }

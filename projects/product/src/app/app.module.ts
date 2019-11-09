@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './components/app.component';
 import {createCustomElement} from '@angular/elements';
 import {AppRoutingModule} from './app-routing.module';
-import {ItemListComponent} from './item-list/item-list.component';
+import {ItemListComponent} from './components/item-list/item-list.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -14,13 +14,13 @@ import {
   MatSelectModule,
   MatTabsModule
 } from '@angular/material';
-import { ItemComponent } from './item/item.component';
-import { EmptyComponent } from './empty/empty.component';
-import { ItemDetailsComponent } from './item/item-details/item-details.component';
+import { ItemComponent } from './components/item/item.component';
+import { EmptyComponent } from './components/empty/empty.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {HttpClientModule} from '@angular/common/http';
-import {MessageService} from './message.service';
+import {MessageService} from './services/message.service';
 
 @NgModule({
   declarations: [
