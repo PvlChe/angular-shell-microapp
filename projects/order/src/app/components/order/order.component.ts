@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
     user: any,
     item: any
   };
+  amount;
   adresse = '';
   plz = '';
   ort = '';
@@ -31,6 +32,7 @@ export class OrderComponent implements OnInit {
 
   setData() {
     this.data = { user: this.messageService.getUser(), item: this.messageService.getItem()};
+    this.amount = this.messageService.getAmount();
   }
 
   onCancelClick() {
@@ -46,6 +48,8 @@ export class OrderComponent implements OnInit {
     const data = {
       userID: this.data.user._id,
       itemID: this.data.item._id,
+      itemAmount: this.data.item.amount,
+      orderedAmount: this.amount,
       itemModel: this.data.item.model,
       itemBrand: this.data.item.brand,
       itemColor: this.data.item.color,
@@ -56,7 +60,7 @@ export class OrderComponent implements OnInit {
       ort: this.ort,
     };
 
-    this.orderService.saveOrder(data).subscribe(
+    this.orderService.saveOrder(data).subscribe( () => {}, () => {},
       () => {
         const event = new CustomEvent('route', {detail: {route: 'dashboard'}});
         window.dispatchEvent(event);

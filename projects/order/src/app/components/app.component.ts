@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     window.addEventListener('route', (event: CustomEvent) => {
       console.log('###DEBUG_ORDER: route event: ', event);
       if (event.detail.orderData) {
-        this.messageService.setItem(event.detail.orderData);
+        this.messageService.setItem(event.detail.orderData.item);
+        this.messageService.setAmount(event.detail.orderData.amount);
         console.log('###DEBUG_ORDER: item data recieved');
       }
       this.router.navigate([event.detail.route]);

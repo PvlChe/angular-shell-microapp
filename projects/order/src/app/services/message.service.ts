@@ -5,6 +5,7 @@ import {Subject} from 'rxjs';
 export class MessageService {
   private user;
   private item;
+  private amount;
 
   setUser(user: object) {
     this.user = user;
@@ -12,6 +13,14 @@ export class MessageService {
 
   setItem(item: object) {
     this.item = item;
+  }
+
+  setAmount(amount: object) {
+    this.amount = amount;
+  }
+
+  getAmount() {
+    return this.amount;
   }
 
   getUser() {

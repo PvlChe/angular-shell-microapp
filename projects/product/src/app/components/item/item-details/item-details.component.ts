@@ -47,7 +47,7 @@ export class ItemDetailsComponent implements OnInit {
 
   onBuyClick() {
     if (localStorage.userID) {
-      const event = new CustomEvent('route', {detail: {route: 'order', orderData:  this.item}});
+      const event = new CustomEvent('route', {detail: {route: 'order', orderData:  {item: this.item, amount: this.selected}}});
       window.dispatchEvent(event);
     } else {
       const event = new CustomEvent('route', {detail: {route: 'login'}});
