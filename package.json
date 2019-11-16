@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/shell-app",
-    "start:product": "live-server dist/product --port=61268",
-    "start:order": "live-server dist/order --port=60000",
+    "start:product": "live-server dist/product --port=61268 --no-browser",
+    "start:order": "live-server dist/order --port=60000 --no-browser",
     "build": "npm run build:shell-app && npm run build:product && npm run build:order",
     "build:product": "ng build --prod --project product --output-hashing none --vendor-chunk false --single-bundle true --output-path dist/product",
     "build:order": "ng build --prod --project order --output-hashing none --vendor-chunk false --single-bundle true --output-path dist/order",

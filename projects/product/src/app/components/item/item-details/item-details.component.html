@@ -5,7 +5,7 @@
         <mat-card-title>{{item.brand + ' ' + item.model}}</mat-card-title>
         <mat-card-subtitle>{{item.color + ', ' + item.volume}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image src="{{item.imageURL}}" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <h5><b>Description:</b></h5>
       <p>

@@ -1,15 +1,15 @@
-<div class="p-5">
-  <h2>Order Widget.</h2>
-  <h2>Your orders:</h2>
+<div class="p-3 order mx-5 my-3">
+  <h2>Order widget.</h2>
+  <h3>Your orders:</h3>
 
-  <mat-card class="example-card m-5" *ngFor="let order of orders">
+  <mat-card class="example-card my-1 mb-4" *ngFor="let order of orders">
     <mat-card-header>
       <mat-card-title>{{order.itemBrand + ' ' + order.itemModel}}</mat-card-title>
       <mat-card-subtitle>{{order.itemColor + ' ' + order.itemVolume}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <mat-label><b>Delievery adresse:</b></mat-label>
-      <span>{{order.adresse}}</span>
+      <mat-label><b>Delievery adresse: </b></mat-label>
+      <span>{{order.adresse}}, </span>
       <span>{{order.plz + ' ' + order.ort}}</span>
     </mat-card-content>
   </mat-card>

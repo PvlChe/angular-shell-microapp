@@ -11,13 +11,15 @@ import { EmptyComponent } from './components/empty/empty.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UserWidgetComponent } from './components/user-widget/user-widget.component';
 import {UserService} from './services/user.service';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EmptyComponent,
-    UserWidgetComponent
+    UserWidgetComponent,
+    WelcomeComponent
   ],
   imports: [
     HttpClientModule,
@@ -27,6 +29,7 @@ import {UserService} from './services/user.service';
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'dashboard', component: UserWidgetComponent},
+      {path: '', component: WelcomeComponent},
       {path: '**', component: EmptyComponent},
 
     ], { useHash: true }),

@@ -1,10 +1,16 @@
-<div class="p-5 d-flex flex-column" *ngIf="user">
+<div class="p-3 d-flex flex-column user mx-5 my-3" *ngIf="user">
   <h2>User widget.</h2>
-  <h2>Your personal data:</h2>
-    <mat-label>Firstname</mat-label>
+  <h3>Your personal data:</h3>
+  <div>
+    <mat-label><b>Firstname: </b></mat-label>
     <span>{{user.name}}</span>
-    <mat-label>Lastname</mat-label>
+  </div>
+  <div>
+    <mat-label><b>Lastname: </b></mat-label>
     <span>{{user.name}}</span>
-    <mat-label>Email</mat-label>
+  </div>
+  <div>
+    <mat-label><b>Email: </b></mat-label>
     <span>{{user.email}}</span>
+  </div>
 </div>
