@@ -32,7 +32,13 @@
           <input matInput placeholder="Enter your password" [formControl]="password" required>
           <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">Sign Up</button>
+        <button mat-raised-button color="primary" (click)="signUp()"
+                [disabled]="firstname.invalid ||
+                  lastname.invalid ||
+                  email.invalid ||
+                  password.invalid">
+          Sign Up
+        </button>
       </div>
     </mat-tab>
   </mat-tab-group>

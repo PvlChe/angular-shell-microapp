@@ -14,6 +14,10 @@ export class UserService {
     return this.http.post<any>('http://localhost:4001/user/login', {email, password});
   }
 
+  signUp( email: string, password: string, firstname: string, lastname: string) {
+    return this.http.post<any>('http://localhost:4001/user/signUp', {email, password, firstname, lastname});
+  }
+
   getUserByID(id: string) {
     return this.http.get<any>('http://localhost:4001/user/' + id);
   }

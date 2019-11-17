@@ -55,4 +55,14 @@ export class LoginComponent {
 
     this.router.navigate(['product']);
   }
+
+  signUp() {
+      this.userService.signUp(this.email.value, this.password.value, this.firstname.value, this.lastname.value).subscribe(
+        user => {
+          this.onLogin(user);
+        },
+        () => {
+          delete localStorage.userID;
+        });
+    }
 }

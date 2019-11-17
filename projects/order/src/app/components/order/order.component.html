@@ -1,4 +1,4 @@
-<div class="m-5 d-flex flex-wrap" *ngIf="data">
+<div class="m-5 d-flex flex-wrap" *ngIf="data.user">
   <h2 class="w-100 text-center mb-2">Delievery Details</h2>
   <div class="input-container d-flex flex-column w-50 px-5" >
     <mat-label class="mb-2">Anrede:</mat-label>
@@ -8,11 +8,11 @@
     </mat-radio-group>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Firstname</mat-label>
-      <input matInput #first [required]="true" [(ngModel)]="data.user.name">
+      <input matInput #first [required]="true" [(ngModel)]="data.user.firstname">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Lastname</mat-label>
-      <input matInput #last [required]="true" [(ngModel)]="data.user.name">
+      <input matInput #last [required]="true" [(ngModel)]="data.user.lastname">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Email</mat-label>
@@ -20,15 +20,15 @@
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Adresse</mat-label>
-      <input matInput [required]="true" [(ngModel)]="adresse">
+      <input matInput #adressv [required]="true" [(ngModel)]="adresse">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>PLZ</mat-label>
-      <input matInput [required]="true" [(ngModel)]="plz">
+      <input matInput #plzv [required]="true" [(ngModel)]="plz">
     </mat-form-field>
     <mat-form-field class="mt-1 mb-3 w-50">
       <mat-label>Ort</mat-label>
-      <input matInput [required]="true" [(ngModel)]="ort">
+      <input matInput #ortv [required]="true" [(ngModel)]="ort">
     </mat-form-field>
   </div>
   <div class="output-container d-flex flex-column w-50 px-5">
@@ -58,6 +58,7 @@
           (click)="onCancelClick()">Cancel
   </button>
     <button mat-raised-button color="accent" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
+            [disabled]="!first.value || !last.value || !email.value || !adressv.value || !plzv.value || !ortv.value"
        (click)="onSaveClick()">Save
     </button>
   </div>
